@@ -73,12 +73,13 @@ def discolour_layer_v4(img, layer) :
     # Convert the pixels to gray scale.
     try:
         # Calculate the number of tiles.
-        tn = int(layer.width / 64)
-        if(layer.width % 64 > 0):
+        tn = int(layer.width / gimp.tile_width())
+        if (layer.width % gimp.tile_width() > 0):
             tn += 1
-        tm = int(layer.height / 64)
-        if(layer.height % 64 > 0):
+        tm = int(layer.height / gimp.tile_height())
+        if (layer.height % gimp.tile_height() > 0):
             tm += 1
+
         
         # Iterate over the tiles.
         for i in range(tn):
